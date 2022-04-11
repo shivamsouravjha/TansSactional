@@ -3,7 +3,7 @@ package patch
 import (
 	"net/http"
 	"transactional/constants"
-	"transactional/helpers/db"
+	db "transactional/helpers/db/company"
 	"transactional/struct/request"
 	"transactional/struct/response"
 	"transactional/utils"

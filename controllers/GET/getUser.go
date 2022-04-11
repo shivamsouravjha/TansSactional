@@ -3,7 +3,7 @@ package get
 import (
 	"net/http"
 	"transactional/constants"
-	"transactional/helpers/db"
+	db "transactional/helpers/db/user"
 	"transactional/struct/request"
 	"transactional/struct/response"
 
