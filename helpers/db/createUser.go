@@ -18,9 +18,6 @@ func CreateUserDAO(ctx context.Context, getContentRequest *request.CreateUser) s
 	}
 	newUserId, _ := user.LastInsertId()
 	_, err = services.Dbmap.Exec("INSERT INTO usercompanyrelation (idcompany,iduser) VALUES(?,?)", getContentRequest.CompanyID, newUserId)
-	sqlstring := fmt.Sprintln("INSERT INTO usercompanyrelation (idcompany,iduser) VALUES(", getContentRequest.CompanyID, newUserId, ")")
-	fmt.Println(sqlstring)
-
 	if err != nil {
 		fmt.Println(err.Error())
 		return "No such company exsits"

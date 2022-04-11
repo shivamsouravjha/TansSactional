@@ -7,9 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func JWT(header string) gin.HandlerFunc {
+func JWT(token string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token := c.GetHeader(header)
+		token := c.GetHeader(token)
 		if token != "" {
 			jwtCheck, err := utils.TokenParse(token, "mySigningKey")
 			if err != nil {

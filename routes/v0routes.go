@@ -2,6 +2,7 @@ package routes
 
 import (
 	get "transactional/controllers/GET"
+	patch "transactional/controllers/PATCH"
 	post "transactional/controllers/POST"
 	"transactional/middlewares"
 
@@ -23,7 +24,7 @@ func v0Routes(route *gin.RouterGroup) {
 			user.GET("/getuser", get.GetUser)
 			user.POST("/createuser", post.CreateUser)
 			user.Use(middlewares.JWT("usertoken"))
-			// user.PATCH("/updateuser")
+			user.PATCH("/updateuser", patch.UpdateUser)
 		}
 		invoices := v1Routes.Group("/invoices")
 		{
