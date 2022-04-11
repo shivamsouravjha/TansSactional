@@ -29,7 +29,7 @@ func v0Routes(route *gin.RouterGroup) {
 		invoices := v1Routes.Group("/invoices")
 		{
 			invoices.Use(middlewares.JWT("usertoken"))
-			//	invoices.GET("/getinovice")
+			invoices.GET("/getinovice", get.GetInvoice)
 			//	invoices.POST("/createinvoice")
 			//	invoices.PATCH("/updateinvoices")
 		}

@@ -13,3 +13,11 @@ type CompanyDetails struct {
 	Name  string `json:"name"`
 	Email string `json:"email"`
 }
+
+type InvoiceDetails struct {
+	UserID           string `json:"userId,omitempty"`
+	GrandTotal       string `json:"grandtotal"`
+	Page             string `json:"page"`
+	BuyingCompanyID  string `json:"buyingcompanyid"`
+	SellingCompanyID string `json:"sellingcompanyid"`
+}
