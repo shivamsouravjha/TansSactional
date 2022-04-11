@@ -8,3 +8,8 @@ type UserDetails struct {
 type UserID struct {
 	UserID string `json:"iduser"`
 }
+
+type CompanyDetails struct {
+	Name  string `json:"name"`
+	Email string `json:"email"`
+}

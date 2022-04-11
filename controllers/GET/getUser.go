@@ -15,7 +15,7 @@ func GetUser(c *gin.Context) {
 	getContentRequest := request.UserID{
 		UserID: userId,
 	}
-	resp := response.GetUserReponse{}
+	resp := response.GetUserResponse{}
 	UserDetails, err := db.GetUserDAO(c.Request.Context(), &getContentRequest)
 	if err != nil {
 		resp.Message.Status = constants.API_FAILED_STATUS
