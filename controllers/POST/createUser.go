@@ -25,7 +25,7 @@ func CreateUser(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, resp)
 		return
 	}
-	token, tokenerror := utils.GenerateToken("user")
+	token, tokenerror := utils.GenerateToken()
 	if tokenerror != nil {
 		resp.Status.Status = constants.API_FAILED_STATUS
 		resp.Status.Message = "User Created,Please login"

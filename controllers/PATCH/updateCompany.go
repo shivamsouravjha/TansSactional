@@ -1,4 +1,4 @@
-package post
+package patch
 
 import (
 	"net/http"
@@ -11,14 +11,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateCompany(c *gin.Context) {
-	createUserStruct := request.CreateCompany{}
-	if err := c.ShouldBind(&createUserStruct); err != nil {
+func UpdateCompany(c *gin.Context) {
+
+	companyID := c.Request.Header.Get("companyId")
+	updateCompanyRequest := request.CompanyID{
+		CompanyID: companyID,
+	}
+	updateUserEequest := request.CreateCompany{}
+
+	if err := c.ShouldBind(&updateUserEequest); err != nil {
 		c.JSON(422, utils.SendErrorResponse(err))
 		return
 	}
 	resp := response.CreatedResponse{}
-	err := db.CreateCompanyDAO(c.Request.Context(), &createUserStruct)
+	err := db.UpdateCompanyDAO(c.Request.Context(), &updateUserEequest, &updateCompanyRequest)
 	if err != "" {
 		resp.Status.Message = constants.API_FAILED_STATUS
 		resp.Status.Status = err
@@ -28,12 +34,12 @@ func CreateCompany(c *gin.Context) {
 	token, tokenerror := utils.GenerateToken()
 	if tokenerror != nil {
 		resp.Status.Status = constants.API_FAILED_STATUS
-		resp.Status.Message = "Company Created,Please login"
+		resp.Status.Message = "User Created,Please login"
 		c.JSON(http.StatusInternalServerError, resp)
 		return
 	}
 	resp.Status.Status = "Success"
-	resp.Status.Message = "Company Created successfully"
+	resp.Status.Message = "User Created successfully"
 	resp.Token = token
 	c.JSON(http.StatusOK, resp)
 }

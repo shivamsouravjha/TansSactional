@@ -17,7 +17,7 @@ func v0Routes(route *gin.RouterGroup) {
 			company.POST("/createcompany", post.CreateCompany)
 			company.GET("/getcompany", get.GetCompany)
 			company.Use(middlewares.JWT("companytoken"))
-			company.PATCH("/updatecompany")
+			company.PATCH("/updatecompany", patch.UpdateCompany)
 		}
 		user := v1Routes.Group("/user")
 		{
