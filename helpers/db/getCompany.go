@@ -8,9 +8,9 @@ import (
 	"transactional/struct/request"
 )
 
-func GetCompanyDAO(ctx context.Context, getContentRequest *request.CompanyID) (*structs.CompanyDetails, error) {
+func GetCompanyDAO(ctx context.Context, getCompanyDetails *request.CompanyID) (*structs.CompanyDetails, error) {
 	var CompanyDetails structs.CompanyDetails
-	sqlString := fmt.Sprintf("SELECT name , email from company  where companyid = \"%v\" ", getContentRequest.CompanyID)
+	sqlString := fmt.Sprintf("SELECT name , email from company  where companyid = \"%v\" ", getCompanyDetails.CompanyID)
 	err := services.Dbmap.SelectOne(&CompanyDetails, sqlString)
 	if err != nil {
 		fmt.Println(err.Error(), sqlString)
@@ -19,7 +19,7 @@ func GetCompanyDAO(ctx context.Context, getContentRequest *request.CompanyID) (*
 	return &CompanyDetails, nil
 }
 
-func GetAllCompanyDAO(ctx context.Context, getContentRequest *request.CompanyID) (*[]structs.CompanyDetails, error) {
+func GetAllCompanyDAO(ctx context.Context) (*[]structs.CompanyDetails, error) {
 	var CompanyDetails []structs.CompanyDetails
 	sqlString := fmt.Sprintf("SELECT name , email from company")
 	_, err := services.Dbmap.Select(&CompanyDetails, sqlString)

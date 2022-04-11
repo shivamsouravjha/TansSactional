@@ -11,8 +11,8 @@ func TokenParse(myToken string, myKey string) (*jwt.Token, error) {
 	return token, err
 }
 
-func GenerateToken() (string, error) {
+func GenerateToken(key string) (string, error) {
 	token := jwt.New(jwt.SigningMethodHS256)
-	tokenString, err := token.SignedString([]byte("mySigningKey"))
+	tokenString, err := token.SignedString([]byte(key))
 	return tokenString, err
 }

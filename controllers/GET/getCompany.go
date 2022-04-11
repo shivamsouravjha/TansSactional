@@ -30,7 +30,7 @@ func GetCompany(c *gin.Context) {
 		c.JSON(http.StatusOK, resp)
 	} else {
 		resp := response.GetAllCompanyResponse{}
-		CompanyDetails, err := db.GetAllCompanyDAO(c.Request.Context(), &getContentRequest)
+		CompanyDetails, err := db.GetAllCompanyDAO(c.Request.Context())
 		if err != nil {
 			resp.Message.Status = constants.API_FAILED_STATUS
 			resp.Message.Message = "Unlocking Content Failed"

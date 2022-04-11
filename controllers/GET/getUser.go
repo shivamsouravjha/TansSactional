@@ -30,7 +30,7 @@ func GetUser(c *gin.Context) {
 		c.JSON(http.StatusOK, resp)
 	} else {
 		resp := response.GetAllUserResponse{}
-		UserDetails, err := db.GetAllUserDAO(c.Request.Context(), &getContentRequest)
+		UserDetails, err := db.GetAllUserDAO(c.Request.Context())
 		if err != nil {
 			resp.Message.Status = constants.API_FAILED_STATUS
 			resp.Message.Message = "Unlocking Content Failed"

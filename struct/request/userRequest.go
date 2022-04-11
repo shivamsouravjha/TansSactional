@@ -14,3 +14,9 @@ type CreateUser struct {
 	CompanyID int    `json:"companyid"`
 	Password  string `json:"password"`
 }
+
+type CreateCompany struct {
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}

@@ -22,7 +22,7 @@ type GetAllCompanyResponse struct {
 	Message        Response
 	CompanyDetails *[]structs.CompanyDetails
 }
-type CreatedUserResponse struct {
+type CreatedResponse struct {
 	Status Response
 	Token  string `json:"token`
 }
