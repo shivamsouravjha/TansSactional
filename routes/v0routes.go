@@ -1,6 +1,7 @@
 package routes
 
 import (
+	get "transactional/controllers/GET"
 	"transactional/middlewares"
 
 	"github.com/gin-gonic/gin"
@@ -11,24 +12,24 @@ func v0Routes(route *gin.RouterGroup) {
 	{
 		company := v1Routes.Group("/company")
 		{
-			company.POST("/createcompany")
-			company.GET("/getcompany")
-			v1Routes.Use(middlewares.JWT("companytoken"))
-			company.PATCH("/updatecompany")
+			//			company.POST("/createcompany")
+			//	company.GET("/getcompany")
+			company.Use(middlewares.JWT("companytoken"))
+			//			company.PATCH("/updatecompany")
 		}
 		user := v1Routes.Group("/user")
 		{
-			user.GET("/getuser")
-			user.POST("/createuser")
-			v1Routes.Use(middlewares.JWT("usertoken"))
-			user.PATCH("/updateuser")
+			user.GET("/getuser", get.GetUser)
+			//			user.POST("/createuser")
+			user.Use(middlewares.JWT("usertoken"))
+			//			user.PATCH("/updateuser")
 		}
 		invoices := v1Routes.Group("/invoices")
 		{
-			v1Routes.Use(middlewares.JWT("usertoken"))
-			invoices.GET("/getinovice")
-			invoices.POST("/createinvoice")
-			invoices.PATCH("/updateinvoices")
+			invoices.Use(middlewares.JWT("usertoken"))
+			//	invoices.GET("/getinovice")
+			//	invoices.POST("/createinvoice")
+			//	invoices.PATCH("/updateinvoices")
 		}
 	}
 }

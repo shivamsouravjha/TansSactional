@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "transactional/server"
 
 func main() {
-	fmt.Println("beginning project")
+	server.Init()
 }
