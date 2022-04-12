@@ -32,7 +32,8 @@ func v0Routes(route *gin.RouterGroup) {
 			invoices.GET("/getinvoice", get.GetInvoice)
 			invoices.POST("/createinvoice", post.CreateInvoice)
 			invoices.PATCH("/updateinvoices", patch.UpdateInvoice)
-			invoices.POST("/sendinvoice", patch.UpdateInvoice)
+			invoices.PATCH("/sendinvoice", patch.SendInvoice)
+			invoices.PATCH("/acknowledgeinvoice", patch.AcknowledgeInvoice)
 		}
 	}
 }

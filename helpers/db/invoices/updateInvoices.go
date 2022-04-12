@@ -21,3 +21,23 @@ func UpdateInvociesDAO(ctx context.Context, updateInvoiceRequest *request.Update
 	}
 	return ""
 }
+
+func SettleInvoiceDAO(ctx context.Context, updateInvoiceRequest *request.UpdateInvoce) string {
+	sql := fmt.Sprintf("update `invoices` set settled = true where idinvoices=\"%v\" ", updateInvoiceRequest.InvoicesID)
+	_, err := services.Dbmap.Exec(sql)
+	if err != nil {
+		fmt.Println(err.Error(), sql)
+		return "unable to update settle invoice"
+	}
+	return ""
+}
+
+func AcknowledgeInvoiceDAO(ctx context.Context, updateInvoiceRequest *request.UpdateInvoce) string {
+	sql := fmt.Sprintf("update `invoices` set acknowledged = true where idinvoices=\"%v\" ", updateInvoiceRequest.InvoicesID)
+	_, err := services.Dbmap.Exec(sql)
+	if err != nil {
+		fmt.Println(err.Error(), sql)
+		return "unable to update acknowledge invoice"
+	}
+	return ""
+}
