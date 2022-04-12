@@ -10,7 +10,7 @@ import (
 
 func GetInvoicesDAO(ctx context.Context, getInvoice *request.GetInvoice) (*[]structs.InvoiceDetails, error) {
 	var InvoiceDetails []structs.InvoiceDetails
-	sqlString := fmt.Sprintf("SELECT grand_total as grandtotal,buying_company_id as buyingcompanyid,selling_company_id as sellingcompanyid from invoices where user_id = \"%v\" ", getInvoice.UserID)
+	sqlString := fmt.Sprintf("SELECT grand_total as grandtotal,buying_company_id as buyingcompanyid,selling_company_id as sellingcompanyid,acknowledged,settled from invoices where user_id = \"%v\" ", getInvoice.UserID)
 	if len(getInvoice.Filter.Comperator) != 0 && len(getInvoice.Filter.Value) != 0 {
 		if getInvoice.Filter.Comperator == "greater" {
 			sqlString += fmt.Sprintf("&& grand_total > \"%v\" ", getInvoice.Filter.Value)
@@ -33,6 +33,18 @@ func GetInvoicesDAO(ctx context.Context, getInvoice *request.GetInvoice) (*[]str
 	if err != nil {
 		fmt.Println(err.Error(), sqlString)
 		return nil, err
+	}
+	for index, key := range InvoiceDetails {
+		if key.Settled == "0" {
+			InvoiceDetails[index].Settled = "Unsettled"
+		} else {
+			InvoiceDetails[index].Settled = "Settled"
+		}
+		if key.Acknowledged == "0" {
+			InvoiceDetails[index].Acknowledged = "Un-acknowledged"
+		} else {
+			InvoiceDetails[index].Acknowledged = "Acknowledged"
+		}
 	}
 	return &InvoiceDetails, nil
 }

@@ -17,7 +17,9 @@ type CompanyDetails struct {
 type InvoiceDetails struct {
 	UserID           string `json:"userId,omitempty"`
 	GrandTotal       string `json:"grandtotal"`
-	Page             string `json:"page"`
+	Page             string `json:"page,omitempty"`
 	BuyingCompanyID  string `json:"buyingcompanyid"`
 	SellingCompanyID string `json:"sellingcompanyid"`
+	Acknowledged     string `json:"acknowledged"`
+	Settled          string `json:"settled"`
 }
