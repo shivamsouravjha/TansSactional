@@ -11,3 +11,10 @@ type Filter struct {
 	Comperator string `json:"comperator,omitempty"`
 	Value      string `json:"value,omitempty"`
 }
+
+type CreateInvoice struct {
+	UserID           string `json:"userId" binding:"required"`
+	GrandTotal       string `json:"grandtotal" binding:"required"`
+	BuyingCompanyID  string `json:"buyingcompanyid" binding:"required"`
+	SellingCompanyID string `json:"sellingcompanyid" binding:"required"`
+}
