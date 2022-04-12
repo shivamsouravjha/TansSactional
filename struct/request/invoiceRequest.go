@@ -18,3 +18,8 @@ type CreateInvoice struct {
 	BuyingCompanyID  string `json:"buyingcompanyid" binding:"required"`
 	SellingCompanyID string `json:"sellingcompanyid" binding:"required"`
 }
+
+type UpdateInvoce struct {
+	GrandTotal string `json:"grandtotal" binding:"required"`
+	InvoicesID string `json:"idinvoices" binding:"required"`
+}
