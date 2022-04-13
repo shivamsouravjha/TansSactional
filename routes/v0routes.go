@@ -25,6 +25,7 @@ func v0Routes(route *gin.RouterGroup) {
 			user.POST("/createuser", post.CreateUser)
 			user.Use(middlewares.JWT("usertoken"))
 			user.PATCH("/updateuser", patch.UpdateUser)
+			user.POST("/createproduct", post.CreateProduct)
 		}
 		invoices := v1Routes.Group("/invoices")
 		{

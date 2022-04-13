@@ -10,3 +10,9 @@ type CreateUser struct {
 	CompanyID int    `json:"companyid" binding:"required"`
 	Password  string `json:"password" binding:"required"`
 }
+
+type CreateProduct struct {
+	ProductName string `json:"productname" binding:"required"`
+	Price       int    `json:"price" binding:"required"`
+	CompanyID   string `json:"companyid"`
+}

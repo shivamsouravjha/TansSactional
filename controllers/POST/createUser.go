@@ -37,3 +37,21 @@ func CreateUser(c *gin.Context) {
 	resp.Token = token
 	c.JSON(http.StatusOK, resp)
 }
+
+func CreateProduct(c *gin.Context) {
+	userId := c.Request.Header.Get("userId")
+	createUserStruct := request.CreateProduct{}
+	if err := c.ShouldBind(&createUserStruct); err != nil {
+		c.JSON(422, utils.SendErrorResponse(err))
+		return
+	}
+	resp := response.Response{}
+	err := db.CreateProductDAO(c.Request.Context(), &createUserStruct, userId)
+	if err != "" {
+		resp.Message = constants.API_FAILED_STATUS
+		resp.Status = err
+		c.JSON(http.StatusInternalServerError, resp)
+		return
+	}
+	c.JSON(http.StatusOK, resp)
+}
