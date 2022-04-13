@@ -24,5 +24,5 @@ type GetAllCompanyResponse struct {
 }
 type CreatedResponse struct {
 	Status Response
-	Token  string `json:"token`
+	Token  string `json:"token,omitempty"`
 }

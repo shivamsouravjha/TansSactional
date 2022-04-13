@@ -16,3 +16,10 @@ type CreateProduct struct {
 	Price       int    `json:"price" binding:"required"`
 	CompanyID   string `json:"companyid"`
 }
+
+type UpdateUser struct {
+	Name      string `json:"name" `
+	Email     string `json:"email"`
+	CompanyID int    `json:"companyid"`
+	Password  string `json:"password"`
+}

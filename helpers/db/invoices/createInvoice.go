@@ -19,13 +19,13 @@ func CreateInvoiceDAO(ctx context.Context, createInvoiceRequest *request.CreateI
 	_, err := services.Dbmap.Select(&products, sqlString)
 	if err != nil {
 		fmt.Println(err.Error(), sqlString)
-		return "Can't create Invoice"
+		return "Can't create Invoice as no such product"
 	}
 	sqlString = fmt.Sprintf("INSERT INTO invoices (user_id,selling_company_id,buying_company_id,products,grand_total) SELECT \"%v\",\"%v\",\"%v\",\"%v\",sum(productprice) from product where idproduct in %v", createInvoiceRequest.UserID, createInvoiceRequest.SellingCompanyID, createInvoiceRequest.BuyingCompanyID, products, arrayString)
 	_, err = services.Dbmap.Exec(sqlString)
 	if err != nil {
 		fmt.Println(err.Error(), sqlString)
-		return "Can't create Invoice"
+		return "Can't create Invoice as either userid,or buying company id or selling company id is wrong"
 	}
 	return ""
 }

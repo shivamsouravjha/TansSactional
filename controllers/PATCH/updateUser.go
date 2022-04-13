@@ -12,7 +12,7 @@ import (
 )
 
 func UpdateUser(c *gin.Context) {
-	updateUserEequest := request.CreateUser{}
+	updateUserEequest := request.UpdateUser{}
 	userId := c.Request.Header.Get("userId")
 	userID := request.UserID{
 		UserID: userId,
@@ -21,21 +21,22 @@ func UpdateUser(c *gin.Context) {
 		c.JSON(422, utils.SendErrorResponse(err))
 		return
 	}
-	resp := response.CreatedResponse{}
+	resperr := response.Response{}
 	err := db.UpdateUserDAO(c.Request.Context(), &updateUserEequest, &userID)
 	if err != "" {
-		resp.Status.Message = constants.API_FAILED_STATUS
-		resp.Status.Status = err
-		c.JSON(http.StatusInternalServerError, resp)
+		resperr.Status = constants.API_FAILED_STATUS
+		resperr.Message = err
+		c.JSON(http.StatusInternalServerError, resperr)
 		return
 	}
 	token, tokenerror := utils.GenerateToken()
 	if tokenerror != nil {
-		resp.Status.Status = constants.API_FAILED_STATUS
-		resp.Status.Message = "User data updated,Please login"
-		c.JSON(http.StatusInternalServerError, resp)
+		resperr.Status = constants.API_FAILED_STATUS
+		resperr.Message = "User data updated,Please login"
+		c.JSON(http.StatusInternalServerError, resperr)
 		return
 	}
+	resp := response.CreatedResponse{}
 	resp.Status.Status = "Success"
 	resp.Status.Message = "User data updated successfully"
 	resp.Token = token

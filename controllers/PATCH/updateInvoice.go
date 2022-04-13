@@ -47,7 +47,7 @@ func SendInvoice(c *gin.Context) {
 		return
 	}
 	resp.Status = "Success"
-	resp.Message = "Invoice updated successfully"
+	resp.Message = "Invoice Sent successfully"
 	c.JSON(http.StatusOK, resp)
 }
 
@@ -65,6 +65,6 @@ func AcknowledgeInvoice(c *gin.Context) {
 		return
 	}
 	resp.Status = "Success"
-	resp.Message = "Invoice updated successfully"
+	resp.Message = "Invoice Acknowledged successfully"
 	c.JSON(http.StatusOK, resp)
 }

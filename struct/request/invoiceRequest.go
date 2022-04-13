@@ -8,14 +8,15 @@ type GetInvoice struct {
 }
 
 type Filter struct {
-	Comperator string `json:"comperator,omitempty"`
-	Value      string `json:"value,omitempty"`
+	Comperator   string `json:"comperator,omitempty"`
+	Value        string `json:"value,omitempty"`
+	Settled      string `json:"settled,omitempty"`
+	Acknowledged string `json:"acknowledged,omitempty"`
+	Position     string `json:"position,omitempty"`
 }
-
 type CreateInvoice struct {
 	UserID           string   `json:"userId" binding:"required"`
 	Product          []string `json:"product" binding:"required"`
-	GrandTotal       string   `json:"grandtotal" binding:"required"`
 	BuyingCompanyID  string   `json:"buyingcompanyid" binding:"required"`
 	SellingCompanyID string   `json:"sellingcompanyid" binding:"required"`
 }

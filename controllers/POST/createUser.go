@@ -20,8 +20,8 @@ func CreateUser(c *gin.Context) {
 	resp := response.CreatedResponse{}
 	err := db.CreateUserDAO(c.Request.Context(), &createUserStruct)
 	if err != "" {
-		resp.Status.Message = constants.API_FAILED_STATUS
-		resp.Status.Status = err
+		resp.Status.Status = constants.API_FAILED_STATUS
+		resp.Status.Message = err
 		c.JSON(http.StatusInternalServerError, resp)
 		return
 	}

@@ -2,6 +2,7 @@ package get
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"transactional/constants"
@@ -26,26 +27,31 @@ func GetInvoice(c *gin.Context) {
 	var filterUnmarshal map[string]string
 	error := json.Unmarshal([]byte(filter), &filterUnmarshal)
 	if error == nil {
+
 		getContentRequest.Filter = request.Filter{
-			Comperator: filterUnmarshal["comperator"],
-			Value:      filterUnmarshal["value"],
+			Comperator:   filterUnmarshal["comperator"],
+			Value:        filterUnmarshal["value"],
+			Position:     filterUnmarshal["position"],
+			Settled:      filterUnmarshal["settled"],
+			Acknowledged: filterUnmarshal["acknowledged"],
 		}
 	}
 	resp := response.InvoiceResponse{}
 	if len(userID) == 0 {
-		resp.Message.Message = "No User sent"
+		resp.Message.Message = "No UserID sent"
 		resp.Message.Status = constants.API_FAILED_STATUS
 		c.JSON(http.StatusOK, resp)
 	} else {
 		InvoiceDetails, err := db.GetInvoicesDAO(c.Request.Context(), &getContentRequest)
-		if err != nil {
+		fmt.Println(err)
+		if err != "" {
 			resp.Message.Status = constants.API_FAILED_STATUS
-			resp.Message.Message = "Unlocking Content Failed"
+			resp.Message.Message = "User has no invoice"
 			c.JSON(http.StatusInternalServerError, resp)
 			return
 		}
-		resp.Message.Message = "Success"
-		resp.Message.Status = "Contents unlocked successfully"
+		resp.Message.Status = "Success"
+		resp.Message.Message = "Invoice Fetched successfully"
 		resp.InvoiceResponse = InvoiceDetails
 		resp.Page = Page + 1
 		c.JSON(http.StatusOK, resp)
