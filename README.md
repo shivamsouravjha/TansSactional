@@ -24,7 +24,7 @@ So how does things work?
 * Patch Company Data
   - Sample URL:- https://tranzactional.herokuapp.com/api/v0/company/updatecompany
 * Get Invoices(sort by total,filter by greater,less or equal to amount,
-  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/getinvoice (remover companyId from header and get all users)
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/getinvoice
 * Create Invoice
   - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/createinvoice
 * Patch Company Invoice
