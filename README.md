@@ -9,42 +9,30 @@ So how does things work?
 * JWT
 
 ## Explaining APIs:-
-* Get Username
-  - Input:Username
-  - Output:userId,firstName,lastName,penName,userEmail,bio,number
-  - Sample URL:- https://userserviceshivam.herokuapp.com/api/v0/getUser/:username
+* Get Single User & all Users
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/getuser (remover userID from header and get all users)
 * Create User
-  - Input:userId,firstName,lastName,penName,userEmail,bio,number,password
-  - Output:token
-  - Sample URL:- https://userserviceshivam.herokuapp.com/api/v0/createUser
-* Login User
-  - Input:penName,password
-  - Output:token
-  - Sample URL:- https://userserviceshivam.herokuapp.com/api/v0/loginUser
-* Fetch Unlocked Chapters
-  - Input:UserID,SeriesID
-  - Output:[]{seriesId,title,story}
-  - Sample URL:-https://contentserviceshivam.herokuapp.com/api/v0/content/fetchContent/:userID/:seriesID
-* Bulk Upload Chapters
-  - Input:[]{seriesId,title,story}
-  - Output:Success Response
-  - Ssample URL:-https://contentserviceshivam.herokuapp.com/api/v0/content/uploadContent
-* Get Series
-  - Input:seriesId
-  - Output:seriesId,author,name,chapters
-  - Sample URL:-https://contentserviceshivam.herokuapp.com/api/v0/content/getSeries/:seriesID
-* Create Series
-  - Input:author,name,chapters
-  - Output:Success Response
-  - Sample URL:-https://contentserviceshivam.herokuapp.com/api/v0/content/uploadSeries
-* Unlock Chapters
-  - Input:UserID,SeriesID
-  - Output:Success Response
-  - Sample URL:-https://dailypassserviceshivam.herokuapp.com/api/v0/dailypass/unlockContent
-* Get Unlock Chapters
-  - Input:UserID
-  - Output:Chapter and Unlocked List for given user
-  - Sample URL:-https://dailypassserviceshivam.herokuapp.com/api/v0/dailypass/getUnlockedContent/:userID
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/createuser
+* Patch User Data
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/updateuser
+* Create Product
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/createproduct
+* Get Single Company & all Companies
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/company/getcompany (remover companyId from header and get all users)
+* Create Company
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/company/createcompany
+* Patch Company Data
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/company/updatecompany
+* Get Invoices(sort by total,filter by greater,less or equal to amount,
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/getinvoice (remover companyId from header and get all users)
+* Create Invoice
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/createinvoice
+* Patch Company Invoice
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/updateinvoices
+* Send Company Invoice
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/sendinvoice
+* Acknowledge Company Invoice
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/invoices/acknowledgeinvoice
  
 ## Overall Schematic 
 ![Group Schema (8)](https://user-images.githubusercontent.com/60891544/163135586-5e9e20c3-8180-4813-94c5-4ddcb2d80419.png)
