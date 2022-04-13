@@ -26,7 +26,6 @@ func GetInvoicesDAO(ctx context.Context, getInvoice *request.GetInvoice) (*[]str
 	if len(getInvoice.Sort) != 0 {
 		sqlString += fmt.Sprintln("ORDER BY grand_total ", getInvoice.Sort)
 	}
-	fmt.Println(getInvoice.Page)
 	if getInvoice.Page == 0 {
 		sqlString += fmt.Sprintln("limit 5 offset 0")
 	} else {
