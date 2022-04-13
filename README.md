@@ -12,7 +12,7 @@ So how does things work?
 * Get Single User & all Users
   - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/getuser (remover userID from header and get all users)
 * Create User
-  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/createuser
+  - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/createuser (to create user we need company id,so create company first)
 * Patch User Data
   - Sample URL:- https://tranzactional.herokuapp.com/api/v0/user/updateuser
 * Create Product
