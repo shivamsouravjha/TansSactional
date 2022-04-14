@@ -15,10 +15,11 @@ type Filter struct {
 	Position     string `json:"position,omitempty"`
 }
 type CreateInvoice struct {
-	UserID           string   `json:"userId" binding:"required"`
-	Product          []string `json:"product" binding:"required"`
-	BuyingCompanyID  string   `json:"buyingcompanyid" binding:"required"`
-	SellingCompanyID string   `json:"sellingcompanyid" binding:"required"`
+	UserID            string   `json:"userId" binding:"required"`
+	Product           []string `json:"product" binding:"required"`
+	BuyingCompanyID   string   `json:"buyingcompanyid,omitempty"`
+	BuyingCompanyName string   `json:"buyingcompanyname,omitempty"`
+	SellingCompanyID  string   `json:"sellingcompanyid" binding:"required"`
 }
 
 type UpdateInvoce struct {
