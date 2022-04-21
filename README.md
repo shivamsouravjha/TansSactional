@@ -42,3 +42,8 @@ So how does things work?
 ![Source Diagram (2)](https://user-images.githubusercontent.com/60891544/163108338-882c1501-8bce-406e-b9b3-009e45b98ab7.png)
 ## Invoices Schematic
 ![Source Diagram (3)](https://user-images.githubusercontent.com/60891544/163131509-ba6bd736-a211-4e22-9922-a5ac5e2505a6.png)
+
+## How to start things locally?
+* Import the SQL in SQL sample database.
+* run ~ go run main.go
+* Test the APIs
